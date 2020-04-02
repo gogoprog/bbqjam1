@@ -1,0 +1,6 @@
+[submodule "deps/whiplash"]
+	path = deps/whiplash
+	url = https://github.com/firefalcom/whiplash.git
+[submodule "deps/whiplash-platformer"]
+	path = deps/whiplash-platformer
+	url = git@github.com:gogoprog/whiplash-platformer

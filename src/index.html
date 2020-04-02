@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <title>BBQJAM #1</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+  <script src="http://localhost:35729/livereload.js"></script>
+  <!-- <script src="../deps/game-base/deps/whiplash/lib/phaser.min.js"></script> -->
+  <script src="../deps/whiplash/deps/phaser.js"></script>
+  <script src="../deps/whiplash/deps/jquery-3.3.1.min.js"></script>
+  <style>
+    html,
+    body {
+      margin: 0;
+      height: 100%;
+      overflow: hidden
+    }
+
+    .root {
+      position: absolute;
+      left: 0px;
+      top: 0px;
+      width: 100%;
+      height: 100%;
+    }
+
+    canvas {
+      image-rendering: optimizeSpeed;
+      image-rendering: -moz-crisp-edges;
+      image-rendering: -o-crisp-edges;
+      image-rendering: -webkit-optimize-contrast;
+      image-rendering: optimize-contrast;
+      image-rendering: crisp-edges;
+      image-rendering: pixelated;
+      -ms-interpolation-mode: nearest-neighbor;
+      width: 1280px;
+      height: 800px;
+    }
+
+    .root>div {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="root">
+    <div class="hud">
+    </div>
+  </div>
+  <script>
+    function resizeCanvas(e) {
+      var yourCanvas = document.getElementsByTagName("canvas")[0];
+
+      if (!yourCanvas) {
+        return;
+      }
+
+      var rw = 1024;
+      var rh = 600;
+
+      var wh = window.innerHeight;
+      var ww = window.innerWidth;
+
+      var rwh = rw / rh;
+      var rhw = rh / rw;
+
+      var cw = 0;
+      var ch = 0;
+
+
+      if (wh * rwh < ww) {
+        ch = wh;
+        cw = wh * rwh;
+      } else {
+        ch = ww * rhw;
+        cw = ww;
+      }
+
+      yourCanvas.style.width = cw + "px";
+      yourCanvas.style.height = ch + "px";
+    }
+
+    function delayResizeCanvas() {
+      window.setTimeout(resizeCanvas, 500);
+    }
+
+    window.addEventListener('resize', delayResizeCanvas);
+
+    $(function() {
+      var params = window.location.search.substring(1);
+
+      params = params.split("&")[0];
+
+      if (params.length > 3) {
+        window.message = window.atob(params);
+      }
+      resizeCanvas();
+    });
+  </script>
+  <script src="../build/generated.js"></script>
+</body>
+
+</html>
