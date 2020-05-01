@@ -23,7 +23,7 @@ class Game extends Application {
             scale : {
                 mode: phaser.scale.scalemodes.NONE
             },
-            backgroundColor:"#2f471f"
+            backgroundColor:"#00BFFF"
         };
         super(Config.screenWidth, Config.screenHeight, ".root", config);
     }
@@ -41,13 +41,6 @@ class Game extends Application {
 
         whiplash.platformer.Lib.init(this);
 
-        var e = Factory.createParallax("bg1", 0.1, 0.5);
-        e.get(whiplash.platformer.Parallax).offset.y = 300;
-        engine.addEntity(e);
-        var e = Factory.createParallax("bg1", 0.5);
-        e.get(whiplash.platformer.Parallax).offset.y = 256;
-        engine.addEntity(e);
-
         var e = Factory.createObjectHandler();
         engine.addEntity(e);
 
@@ -55,8 +48,6 @@ class Game extends Application {
         engine.addEntity(e);
         var player = Factory.createPlayer();
         engine.addEntity(player);
-        var e = Factory.createLevel(1, false, 10);
-        engine.addEntity(e);
 
         var e = Factory.createCamera();
         engine.addEntity(e);

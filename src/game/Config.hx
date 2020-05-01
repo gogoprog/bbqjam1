@@ -1,8 +1,8 @@
 package game;
 
 class Config {
-    static public var screenWidth:Int = 1280;
-    static public var screenHeight:Int = 800;
+    static public var screenWidth:Int = 400;
+    static public var screenHeight:Int = 400;
     static public var firstCol:Int = 4;
     static public var firstRow:Int = 6;
     static public var lineSpacing:Int = 3;
