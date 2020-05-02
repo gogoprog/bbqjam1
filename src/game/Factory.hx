@@ -42,7 +42,7 @@ class Factory {
         scene.anims.create({
             key: 'fire',
             frames: scene.anims.generateFrameNames("fire"),
-            frameRate: 10,
+            frameRate: 14,
             repeat: -1
         });
     }
@@ -94,6 +94,7 @@ class Factory {
         e.get(whiplash.platformer.Character).size.setTo(16, 34);
         e.get(whiplash.platformer.Character).offset.setTo(8, 13);
         e.get(whiplash.platformer.Character).jumpSpeed = -300;
+        e.get(whiplash.platformer.Character).maximumSpeed = 150;
         var anims = e.get(whiplash.platformer.Character).animations;
         anims[Idle] = "idle";
         anims[Walk] = "walk";
