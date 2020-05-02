@@ -18,7 +18,8 @@ class Game extends Application {
     public function new() {
         var config = {
             render:{
-                transparent:false
+                transparent:false,
+                pixelArt:true
             },
             scale : {
                 mode: phaser.scale.scalemodes.NONE
@@ -53,6 +54,9 @@ class Game extends Application {
 
         var e = Factory.createCamera();
         engine.addEntity(e);
+
+        var menu = Factory.createLevel(2, false, 100);
+        // engine.addEntity(menu);
     }
 
     static function main():Void {

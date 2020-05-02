@@ -9,7 +9,7 @@ class Factory {
     static var tilemap:phaser.tilemaps.Tilemap;
 
     static public function preload(scene:phaser.Scene) {
-        scene.load.spritesheet('fire', '../data/spritesheets/fire.png', { frameWidth: 8, frameHeight: 16 });
+        scene.load.spritesheet('fire', '../data/spritesheets/fire.png', { frameWidth: 32, frameHeight: 64 });
     }
 
     static public function init(scene:phaser.Scene) {
@@ -22,20 +22,23 @@ class Factory {
         scene.anims.create({
             key: 'idle',
             frames: [
-            untyped { key: 'sausage' },
+            untyped { key: 'sausage_idle0' },
+            untyped { key: 'sausage_idle1' },
             ],
             frameRate: 5,
             repeat: -1
         });
-        // scene.anims.create({
-        //     key: 'hero_walk',
-        //     frames: [
-        //     untyped { key: 'hero_walk' },
-        //     untyped { key: 'hero_walk2' },
-        //     ],
-        //     frameRate: 5,
-        //     repeat: -1
-        // });
+        scene.anims.create({
+            key: 'walk',
+            frames: [
+            untyped { key: 'sausage_walk0' },
+            untyped { key: 'sausage_walk1' },
+            untyped { key: 'sausage_walk2' },
+            untyped { key: 'sausage_walk1' },
+            ],
+            frameRate: 10,
+            repeat: -1
+        });
         scene.anims.create({
             key: 'fire',
             frames: scene.anims.generateFrameNames("fire"),
@@ -80,7 +83,7 @@ class Factory {
 
     static public function createPlayer() {
         var e = new Entity();
-        e.name = "player";
+        // e.name = "player";
         var sprite = new Sprite("sausage");
         sprite.setDepth(9);
         e.add(sprite);
@@ -89,11 +92,12 @@ class Factory {
         e.get(Transform).position.x = 300;
         e.add(new whiplash.platformer.Input());
         e.add(new whiplash.platformer.Character());
-        e.get(whiplash.platformer.Character).size.setTo(32, 32);
-        // e.add(new whiplash.platformer.CameraTarget());
+        e.get(whiplash.platformer.Character).size.setTo(24, 40);
+        e.get(whiplash.platformer.Character).offset.setTo(0, 8);
+        e.get(whiplash.platformer.Character).jumpSpeed = -300;
         var anims = e.get(whiplash.platformer.Character).animations;
         anims[Idle] = "idle";
-        anims[Walk] = "idle";
+        anims[Walk] = "walk";
         return e;
     }
 
@@ -110,7 +114,6 @@ class Factory {
         e.add(new Sprite("fire"));
         e.get(Sprite).play("fire");
         e.get(Sprite).setDepth(1);
-        e.get(Transform).scale.setTo(4, 4);
         e.get(Sprite).anims.setProgress(Math.random());
     }
             ];
