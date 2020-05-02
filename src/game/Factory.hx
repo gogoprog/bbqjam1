@@ -81,11 +81,12 @@ class Factory {
         return e;
     }
 
-    static public function createPlayer() {
+    static public function createSausage() {
         var e = new Entity();
         var sprite = new Sprite("sausage");
         sprite.setDepth(9);
         e.add(sprite);
+        e.add(new Sausage());
         e.add(new Transform());
         e.get(Transform).position.y = 100;
         e.get(Transform).position.x = 300;
@@ -117,8 +118,9 @@ class Factory {
         e.get(Sprite).anims.setProgress(Math.random());
     },
     "start" => function(e, obj, props) {
-        e.add(new Sprite("start"));
+        e.add(new Sprite("sausages"));
         e.get(Sprite).setDepth(1);
+        e.add(new Start());
     }
             ];
 }

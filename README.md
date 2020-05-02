@@ -1,5 +1,5 @@
 # Sausage Redemption
 
-## Credits
+## External assets
 
 https://opengameart.org/content/sci-fi-platform-tiles

@@ -4,13 +4,16 @@ import ash.tools.ListIteratingSystem;
 import ash.core.*;
 import whiplash.phaser.*;
 
+import game.SausageSystem;
+
 class StartNode extends Node<StartNode> {
     public var transform:Transform;
-    public var shake:Start;
+    public var start:Start;
 }
 
 class StartSystem extends ListIteratingSystem<StartNode> {
     private var engine:Engine;
+    private var sausageList:NodeList<SausageNode>;
 
     public function new() {
         super(StartNode, updateNode, onNodeAdded, onNodeRemoved);
@@ -19,6 +22,7 @@ class StartSystem extends ListIteratingSystem<StartNode> {
     public override function addToEngine(engine:Engine) {
         super.addToEngine(engine);
         this.engine = engine;
+        sausageList = engine.getNodeList(SausageNode);
     }
 
     public override function removeFromEngine(engine:Engine) {
@@ -26,6 +30,11 @@ class StartSystem extends ListIteratingSystem<StartNode> {
     }
 
     private function updateNode(node:StartNode, dt:Float):Void {
+        if(sausageList.empty) {
+            var e = Factory.createSausage();
+            e.get(Transform).position.copyFrom(node.transform.position);
+            engine.addEntity(e);
+        }
     }
 
     private function onNodeAdded(node:StartNode) {

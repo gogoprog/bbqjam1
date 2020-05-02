@@ -1,7 +1,7 @@
 package game;
 
 class Sausage {
-    public var time:Float = 0.0;
+    public var life:Float = 255;
 
     public function new() {
     }

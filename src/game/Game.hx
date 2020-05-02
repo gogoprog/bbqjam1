@@ -15,6 +15,7 @@ import whiplash.phaser.*;
 import whiplash.common.components.Active;
 
 class Game extends Application {
+
     public function new() {
         var config = {
             render:{
@@ -51,14 +52,23 @@ class Game extends Application {
         engine.addEntity(e);
         var e = Factory.createLevel(2, false, 10);
         engine.addEntity(e);
-        var player = Factory.createPlayer();
-        engine.addEntity(player);
 
         var e = Factory.createCamera();
         engine.addEntity(e);
 
         var menu = Factory.createLevel(2, false, 100);
         // engine.addEntity(menu);
+
+        var menuState = createState("menu");
+        menuState.addInstance(new MenuSystem());
+
+        var ingameState = createState("ingame");
+        ingameState.addInstance(new StartSystem());
+        ingameState.addInstance(new SausageSystem());
+
+
+        // changeState("menu");
+        changeState("ingame");
     }
 
     static function main():Void {
