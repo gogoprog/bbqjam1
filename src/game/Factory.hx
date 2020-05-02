@@ -114,6 +114,10 @@ class Factory {
         e.get(Sprite).play("fire");
         e.get(Sprite).setDepth(1);
         e.get(Sprite).anims.setProgress(Math.random());
+    },
+    "start" => function(e, obj, props) {
+        e.add(new Sprite("start"));
+        e.get(Sprite).setDepth(1);
     }
             ];
 }
