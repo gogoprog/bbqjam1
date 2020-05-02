@@ -16,6 +16,9 @@ class Factory {
         tilemap = whiplash.Lib.phaserScene.add.tilemap('level');
         tilemap.addTilesetImage('../textures/black.png', 'black');
         tilemap.addTilesetImage('../textures/grill.png', 'grill');
+        tilemap.addTilesetImage('../textures/grass.png', 'grass');
+        tilemap.addTilesetImage('../textures/wood.png', 'wood');
+        tilemap.addTilesetImage('tiles', 'tiles');
         scene.anims.create({
             key: 'idle',
             frames: [
@@ -106,6 +109,7 @@ class Factory {
     "fire" => function(e, obj, props) {
         e.add(new Sprite("fire"));
         e.get(Sprite).play("fire");
+        e.get(Sprite).setDepth(1);
         e.get(Transform).scale.setTo(4, 4);
         e.get(Sprite).anims.setProgress(Math.random());
     }
