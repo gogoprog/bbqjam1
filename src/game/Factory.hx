@@ -25,7 +25,7 @@ class Factory {
             untyped { key: 'sausage_idle0' },
             untyped { key: 'sausage_idle1' },
             ],
-            frameRate: 5,
+            frameRate: 4,
             repeat: -1
         });
         scene.anims.create({
@@ -36,7 +36,7 @@ class Factory {
             untyped { key: 'sausage_walk2' },
             untyped { key: 'sausage_walk1' },
             ],
-            frameRate: 10,
+            frameRate: 8,
             repeat: -1
         });
         scene.anims.create({
@@ -83,7 +83,6 @@ class Factory {
 
     static public function createPlayer() {
         var e = new Entity();
-        // e.name = "player";
         var sprite = new Sprite("sausage");
         sprite.setDepth(9);
         e.add(sprite);
@@ -92,8 +91,8 @@ class Factory {
         e.get(Transform).position.x = 300;
         e.add(new whiplash.platformer.Input());
         e.add(new whiplash.platformer.Character());
-        e.get(whiplash.platformer.Character).size.setTo(24, 40);
-        e.get(whiplash.platformer.Character).offset.setTo(0, 8);
+        e.get(whiplash.platformer.Character).size.setTo(16, 40);
+        e.get(whiplash.platformer.Character).offset.setTo(8, 9);
         e.get(whiplash.platformer.Character).jumpSpeed = -300;
         var anims = e.get(whiplash.platformer.Character).animations;
         anims[Idle] = "idle";
