@@ -91,8 +91,8 @@ class Factory {
         e.get(Transform).position.x = 300;
         e.add(new whiplash.platformer.Input());
         e.add(new whiplash.platformer.Character());
-        e.get(whiplash.platformer.Character).size.setTo(16, 40);
-        e.get(whiplash.platformer.Character).offset.setTo(8, 9);
+        e.get(whiplash.platformer.Character).size.setTo(16, 34);
+        e.get(whiplash.platformer.Character).offset.setTo(8, 13);
         e.get(whiplash.platformer.Character).jumpSpeed = -300;
         var anims = e.get(whiplash.platformer.Character).animations;
         anims[Idle] = "idle";
