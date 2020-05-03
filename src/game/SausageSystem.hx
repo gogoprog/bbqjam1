@@ -40,7 +40,7 @@ class SausageSystem extends ListIteratingSystem<SausageNode> {
                 if(position.x > 2 * 16 && position.x < 22*16) {
                     var distance = 20 * 16 - position.y;
                     var damage = Math.max(400 - distance, 0);
-                    life -= damage * dt * 0.12;
+                    life -= damage * dt * 0.1;
                     var color = untyped Phaser.Display.Color.GetColor(life, life, life);
                     node.sprite.tint = color;
                     sausage.life = life;
