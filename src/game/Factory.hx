@@ -40,6 +40,20 @@ class Factory {
             repeat: -1
         });
         scene.anims.create({
+            key: 'death',
+            frames: [
+            untyped { key: 'sausage_death0' },
+            untyped { key: 'sausage_death1' },
+            untyped { key: 'sausage_death2' },
+            untyped { key: 'sausage_death3' },
+            untyped { key: 'sausage_death4' },
+            untyped { key: 'sausage_death5' },
+            untyped { key: 'sausage_death6' },
+            ],
+            frameRate: 8,
+            repeat: 0
+        });
+        scene.anims.create({
             key: 'fire',
             frames: scene.anims.generateFrameNames("fire"),
             frameRate: 14,

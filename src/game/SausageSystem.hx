@@ -29,18 +29,33 @@ class SausageSystem extends ListIteratingSystem<SausageNode> {
     private function updateNode(node:SausageNode, dt:Float):Void {
         var transform = node.transform;
         var position = transform.position;
+        var sausage = node.sausage;
+        var life = sausage.life;
 
-        if(position.y > 1000) {
-            engine.removeEntity(node.entity);
-        } else {
-            var sausage = node.sausage;
-            var life = sausage.life;
-            var distance = 20 * 16 - position.y;
-            var damage = Math.max(400 - distance, 0);
-            life -= damage * dt * 0.1;
-            var color = untyped Phaser.Display.Color.GetColor(life, life, life);
-            node.sprite.tint = color;
-            sausage.life = life;
+        if(life > 0) {
+            if(position.y > 1000) {
+                engine.removeEntity(node.entity);
+            } else {
+                if(position.x > 2 * 16 && position.x < 22*16) {
+                    var distance = 20 * 16 - position.y;
+                    var damage = Math.max(400 - distance, 0);
+                    life -= damage * dt * 0.1;
+                    var color = untyped Phaser.Display.Color.GetColor(life, life, life);
+                    node.sprite.tint = color;
+                    sausage.life = life;
+
+                    if(life <= 0) {
+                        node.sprite.body.velocity.x = 0;
+                        node.entity.remove(whiplash.platformer.Character);
+                        node.sprite.tint = 0xffffff;
+                        node.sprite.play("death");
+                        Game.instance.delay(function() {
+                            node.entity.remove(Sausage);
+                            Game.instance.increaseLost();
+                        }, 1);
+                    }
+                }
+            }
         }
     }
 

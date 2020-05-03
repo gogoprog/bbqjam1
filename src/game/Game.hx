@@ -15,6 +15,7 @@ import whiplash.phaser.*;
 import whiplash.common.components.Active;
 
 class Game extends Application {
+    static public var instance:Game;
 
     public function new() {
         var config = {
@@ -28,6 +29,7 @@ class Game extends Application {
             backgroundColor:"#00BFFF"
         };
         super(Config.screenWidth, Config.screenHeight, ".root", config);
+        instance = this;
     }
 
     override function preload():Void {
@@ -73,5 +75,11 @@ class Game extends Application {
 
     static function main():Void {
         new Game();
+    }
+
+    public function increaseWin() {
+    }
+
+    public function increaseLost() {
     }
 }
