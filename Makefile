@@ -10,9 +10,10 @@ retail:
 	haxe build.hxml
 	cp data -r retail/
 	cp src/index.html -r retail/src/
+	cp deps/ZzFX.micro.js retail/deps/
 	cp deps/whiplash/deps/phaser.min.js retail/deps/whiplash/deps/
 	cp deps/whiplash/deps/jquery-3.3.1.min.js retail/deps/whiplash/deps/
-	uglifyjs --compress --mangle -- build/generated.js > retail/build/generated.js
+	cp build/generated.js retail/build/generated.js
 
 zip: retail
 	rm -f retail.zip
