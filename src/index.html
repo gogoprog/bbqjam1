@@ -17,13 +17,20 @@
       overflow: hidden
     }
 
+    @font-face {
+      font-family: "main";
+      src: url(../data/gui/emulogic.ttf);
+    }
+
     .root {
+      font-family: "main";
       position: absolute;
       left: 0px;
       top: 0px;
       width: 400px;
       height: 400px;
       zoom: 2;
+      color: white;
     }
 
     canvas {
@@ -46,12 +53,46 @@
       top: 0;
       left: 0;
     }
+
+    .menu {
+      background-color: rgba(0, 0, 0, 0.6);
+      height: 100%;
+    }
+
+    .menu img {
+      position: absolute;
+      transform: translate(-50%, -50%);
+      left: 50%;
+      top: 20%;
+    }
+
+    .menu p {
+      position: absolute;
+      width: 100%;
+      bottom: 1%;
+      font-size: 8px;
+      text-align: center;
+    }
   </style>
 </head>
 
 <body>
   <div class="root">
-    <div class="hud">
+    <div class="pages">
+      <div class="menu default">
+        <img src="../data/gui/title.png" />
+        <p>
+          Help the sausages to get out of the barbecue!
+          <br/>
+          <br/>
+          <br/>
+          <br/>
+          <br/>
+          <br/> Press SPACE to start!
+        </p>
+      </div>
+      <div class="hud">
+      </div>
     </div>
   </div>
   <script>

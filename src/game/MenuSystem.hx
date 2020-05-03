@@ -19,6 +19,15 @@ class MenuSystem extends ash.core.System {
     public override function removeFromEngine(engine:Engine) {
         super.removeFromEngine(engine);
     }
+
+    public override function update(dt:Float) {
+        var keys = whiplash.Input.keys;
+
+        if(keys[' ']) {
+            Game.instance.changeState("ingame");
+            Game.instance.changeUiState("hud");
+        }
+    }
 }
 
 

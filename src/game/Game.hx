@@ -58,9 +58,6 @@ class Game extends Application {
         var e = Factory.createCamera();
         engine.addEntity(e);
 
-        var menu = Factory.createLevel(2, false, 100);
-        // engine.addEntity(menu);
-
         var menuState = createState("menu");
         menuState.addInstance(new MenuSystem());
 
@@ -69,8 +66,11 @@ class Game extends Application {
         ingameState.addInstance(new SausageSystem());
 
 
-        // changeState("menu");
-        changeState("ingame");
+        createUiState("menu", ".menu");
+        createUiState("hud", ".hud");
+        changeState("menu");
+
+        // changeState("ingame");
     }
 
     static function main():Void {
