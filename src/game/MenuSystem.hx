@@ -23,7 +23,7 @@ class MenuSystem extends ash.core.System {
     public override function update(dt:Float) {
         var keys = whiplash.Input.keys;
 
-        if(keys[' ']) {
+        if(keys[' '] || whiplash.Input.isButtonJustPressed(Face1)) {
             Game.instance.startGame();
         }
     }

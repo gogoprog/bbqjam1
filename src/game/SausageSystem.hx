@@ -33,28 +33,30 @@ class SausageSystem extends ListIteratingSystem<SausageNode> {
         var life = sausage.life;
 
         if(life > 0) {
-            if(position.y > 1000) {
-                engine.removeEntity(node.entity);
-                Game.instance.increaseSaved();
-            } else {
-                if(position.x > 2 * 16 && position.x < 22*16) {
-                    var distance = 20 * 16 - position.y;
-                    var damage = Math.max(400 - distance, 0);
-                    life -= damage * dt * 0.1;
-                    var color = untyped Phaser.Display.Color.GetColor(life, life, life);
-                    node.sprite.tint = color;
-                    sausage.life = life;
+            if(position.x > 2 * 16 && position.x < 22*16) {
+                var distance = 20 * 16 - position.y;
+                var damage = Math.max(400 - distance, 0);
+                life -= damage * dt * 0.1;
+                var color = untyped Phaser.Display.Color.GetColor(life, life, life);
+                node.sprite.tint = color;
+                sausage.life = life;
 
-                    if(life <= 0) {
-                        node.sprite.body.velocity.x = 0;
-                        node.entity.remove(whiplash.platformer.Character);
-                        node.sprite.tint = 0xffffff;
-                        node.sprite.play("death");
-                        Game.instance.delay(function() {
-                            node.entity.remove(Sausage);
-                            Game.instance.increaseLost();
-                        }, 1);
-                    }
+                if(life <= 0) {
+                    untyped __js__("zzfx(...[,,341,.03,.3,.5,1,1.46,.27,.12,,,,.8,,1.8])");
+                    node.sprite.body.velocity.x = 0;
+                    node.entity.remove(whiplash.platformer.Character);
+                    node.sprite.tint = 0xffffff;
+                    node.sprite.play("death");
+                    Game.instance.delay(function() {
+                        node.entity.remove(Sausage);
+                        Game.instance.increaseLost();
+                    }, 1);
+                }
+            } else {
+                if(position.y > 400) {
+                    untyped __js__("zzfx(...[,,440,,.4,.4,,1.49,3.74,-0.1,-271,.03,.22,,,,.08]);");
+                    engine.removeEntity(node.entity);
+                    Game.instance.increaseSaved();
                 }
             }
         }

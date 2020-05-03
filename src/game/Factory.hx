@@ -105,14 +105,18 @@ class Factory {
         e.get(Transform).position.y = 100;
         e.get(Transform).position.x = 300;
         e.add(new whiplash.platformer.Input());
-        e.add(new whiplash.platformer.Character());
-        e.get(whiplash.platformer.Character).size.setTo(16, 34);
-        e.get(whiplash.platformer.Character).offset.setTo(8, 13);
-        e.get(whiplash.platformer.Character).jumpSpeed = -300;
-        e.get(whiplash.platformer.Character).maximumSpeed = 150;
-        var anims = e.get(whiplash.platformer.Character).animations;
+        var character = new whiplash.platformer.Character();
+        e.add(character);
+        character.size.setTo(16, 34);
+        character.offset.setTo(8, 13);
+        character.jumpSpeed = -300;
+        character.maximumSpeed = 150;
+        var anims = character.animations;
         anims[Idle] = "idle";
         anims[Walk] = "walk";
+        character.onJump = function() {
+            untyped zzfx(undefined,undefined,116,.01,.01,.22,1,.54,-6.66);
+        }
         return e;
     }
 
