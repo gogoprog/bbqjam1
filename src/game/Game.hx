@@ -80,6 +80,8 @@ class Game extends Application {
         createUiState("gameOver", ".gameOver");
 
         mainMenu();
+
+        whiplash.AudioManager.playMusic("blue-crystal");
     }
 
     public override function onGuiLoaded() {
