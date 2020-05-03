@@ -31,6 +31,14 @@
       height: 400px;
       zoom: 2;
       color: white;
+      image-rendering: optimizeSpeed;
+      image-rendering: -moz-crisp-edges;
+      image-rendering: -o-crisp-edges;
+      image-rendering: -webkit-optimize-contrast;
+      image-rendering: optimize-contrast;
+      image-rendering: crisp-edges;
+      image-rendering: pixelated;
+      -ms-interpolation-mode: nearest-neighbor;
     }
 
     canvas {
@@ -73,6 +81,26 @@
       font-size: 8px;
       text-align: center;
     }
+
+    .menu .sausage {
+      top: 50%;
+      width: 100px;
+      height: 150px;
+    }
+
+    .hud>div {
+      position: absolute;
+      bottom: 5%;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 7px;
+    }
+    .hud>div>div {
+      margin-left:10px;
+      margin-right:10px;
+    }
   </style>
 </head>
 
@@ -81,6 +109,7 @@
     <div class="pages">
       <div class="menu default">
         <img src="../data/gui/title.png" />
+        <img class="sausage" src="../data/textures/sausage_idle0.png" />
         <p>
           Help the sausages to get out of the barbecue!
           <br/>
@@ -92,6 +121,11 @@
         </p>
       </div>
       <div class="hud">
+        <div>
+          <div>Sausages left:<span class="left">0</span></div>
+          <div>Saved:<span class="saved">0</span></div>
+          <div>Lost:<span class="lost">0</span></div>
+        </div>
       </div>
     </div>
   </div>

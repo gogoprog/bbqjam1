@@ -17,6 +17,13 @@ import whiplash.common.components.Active;
 class Game extends Application {
     static public var instance:Game;
 
+    private var left:Int;
+    private var saved:Int;
+    private var lost:Int;
+    private var leftSpan:js.jquery.JQuery;
+    private var savedSpan:js.jquery.JQuery;
+    private var lostSpan:js.jquery.JQuery;
+
     public function new() {
         var config = {
             render:{
@@ -73,13 +80,48 @@ class Game extends Application {
         // changeState("ingame");
     }
 
+    public override function onGuiLoaded() {
+        super.onGuiLoaded();
+        leftSpan = new JQuery("span.left");
+        lostSpan = new JQuery("span.lost");
+        savedSpan = new JQuery("span.saved");
+    }
+
     static function main():Void {
         new Game();
     }
 
-    public function increaseWin() {
+    public function startGame() {
+        Game.instance.changeState("ingame");
+        Game.instance.changeUiState("hud");
+        left = 10;
+        saved = 0;
+        lost = 0;
+        updateHud();
+    }
+
+    public function hasSausagesLeft() {
+        return left > 0;
+    }
+
+    public function onNewSausage() {
+        --left;
+        updateHud();
+    }
+
+    public function increaseSaved() {
+        ++saved;
+        updateHud();
     }
 
     public function increaseLost() {
+        ++lost;
+        updateHud();
+    }
+
+    private function updateHud() {
+        lostSpan.text(""+lost);
+        savedSpan.text(""+saved);
+        leftSpan.text(""+left);
     }
 }

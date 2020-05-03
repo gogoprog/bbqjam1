@@ -31,9 +31,12 @@ class StartSystem extends ListIteratingSystem<StartNode> {
 
     private function updateNode(node:StartNode, dt:Float):Void {
         if(sausageList.empty) {
-            var e = Factory.createSausage();
-            e.get(Transform).position.copyFrom(node.transform.position);
-            engine.addEntity(e);
+            if(Game.instance.hasSausagesLeft()) {
+                var e = Factory.createSausage();
+                e.get(Transform).position.copyFrom(node.transform.position);
+                engine.addEntity(e);
+                Game.instance.onNewSausage();
+            }
         }
     }
 

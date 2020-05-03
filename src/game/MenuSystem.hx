@@ -24,8 +24,7 @@ class MenuSystem extends ash.core.System {
         var keys = whiplash.Input.keys;
 
         if(keys[' ']) {
-            Game.instance.changeState("ingame");
-            Game.instance.changeUiState("hud");
+            Game.instance.startGame();
         }
     }
 }
