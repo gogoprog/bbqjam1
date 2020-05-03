@@ -82,6 +82,7 @@ class Game extends Application {
         mainMenu();
 
         whiplash.AudioManager.playMusic("blue-crystal");
+        whiplash.Input.preventDefaultKeys = true;
     }
 
     public override function onGuiLoaded() {

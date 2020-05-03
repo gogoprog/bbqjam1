@@ -26,11 +26,10 @@
     .root {
       font-family: "main";
       position: absolute;
-      left: 0px;
-      top: 0px;
+      left: 0;
+      top: 0;
       width: 400px;
       height: 400px;
-      zoom: 2;
       color: white;
       image-rendering: optimizeSpeed;
       image-rendering: -moz-crisp-edges;
@@ -40,6 +39,8 @@
       image-rendering: crisp-edges;
       image-rendering: pixelated;
       -ms-interpolation-mode: nearest-neighbor;
+      transform: scale(2, 2);
+      transform-origin: 0 0;
     }
 
     canvas {
@@ -124,10 +125,8 @@
         <p>
           Help the sausages to get out of the barbecue!
           <br/>
-          <br/>
-          How to play:
-          <br/>
-          Space/Arrows or Gamepad
+          <br/> How to play:
+          <br/> Space/Arrows or Gamepad
           <br/>
           <br/>
           <br/>
