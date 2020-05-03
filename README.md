@@ -2,5 +2,6 @@
 
 ## External assets
 
-https://opengameart.org/content/sci-fi-platform-tiles
-https://clyp.it/j0r2qdqi
+ * Tiles: https://opengameart.org/content/sci-fi-platform-tiles
+ * Music: https://clyp.it/j0r2qdqi
+ * SFX: https://zzfx.3d2k.com/
