@@ -37,6 +37,9 @@ class StartSystem extends ListIteratingSystem<StartNode> {
                 engine.addEntity(e);
                 Game.instance.onNewSausage();
             }
+            else {
+                Game.instance.gameOver();
+            }
         }
     }
 

@@ -68,16 +68,18 @@ class Game extends Application {
         var menuState = createState("menu");
         menuState.addInstance(new MenuSystem());
 
+        var gameOverState = createState("gameOver");
+        gameOverState.addInstance(new GameOverSystem());
+
         var ingameState = createState("ingame");
         ingameState.addInstance(new StartSystem());
         ingameState.addInstance(new SausageSystem());
 
-
         createUiState("menu", ".menu");
         createUiState("hud", ".hud");
-        changeState("menu");
+        createUiState("gameOver", ".gameOver");
 
-        // changeState("ingame");
+        mainMenu();
     }
 
     public override function onGuiLoaded() {
@@ -91,13 +93,23 @@ class Game extends Application {
         new Game();
     }
 
+    public function mainMenu() {
+        changeState("menu");
+        changeUiState("menu");
+    }
+
     public function startGame() {
-        Game.instance.changeState("ingame");
-        Game.instance.changeUiState("hud");
+        changeState("ingame");
+        changeUiState("hud");
         left = 10;
         saved = 0;
         lost = 0;
         updateHud();
+    }
+
+    public function gameOver() {
+        changeState("gameOver");
+        changeUiState("gameOver");
     }
 
     public function hasSausagesLeft() {
